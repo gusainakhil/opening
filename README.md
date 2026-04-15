@@ -221,7 +221,7 @@ Edit the following in `index.html`:
 <p>+91-9876543210</p>
 <p>+91-8765432109</p>
 <p>info@royalhimalayanheights.com</p>
-<p>events@royalhimalayanheights.com</p>
+<p>info@everythingeasy.in</p>
 ```
 
 ### Customize Pricing
@@ -339,7 +339,7 @@ Dehradun
 
 ### Email
 - info@royalhimalayanheights.com
-- events@royalhimalayanheights.com
+- info@everythingeasy.in
 
 ### Business Hours
 - **Daily:** 8:00 AM - 11:00 PM
@@ -497,4 +497,5 @@ For support, feature requests, or bug reports, please contact:
 > **Celebrate Every Moment in the Lap of Nature** 🏔️
 
 For more information, visit our website and follow us on social media!
+# opening
 # opening
