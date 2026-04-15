@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opening - Premium Event Venue & Resort Cafe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="mountain-loader"></div>
+            <p>opening</p>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>opening</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#why-us" class="nav-link">Why Choose Us</a></li>
+                <li><a href="#investment" class="nav-link">Investment</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <video autoplay muted loop class="hero-video">
+                <source src="https://cdn.pixabay.com/video/2024/02/25/201947-916877801_large.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-aos="fade-up">Celebrate Every Moment in the Lap of Nature</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">A premium event cafe & venue for all your special occasions in the majestic Himalayas</p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+                <button class="btn btn-primary" onclick="scrollToSection('contact')">Book Your Event</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('investment')">Contact Investor</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>About opening</h2>
+                <p>Where Mountains Meet Celebrations</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Your Complete Event Destination</h3>
+                    <p>opening is a premium multi-purpose venue nestled in the scenic beauty of Uttarakhand. We offer a perfect blend of:</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Premium Event Venue & Conference Halls</li>
+                        <li><i class="fas fa-check-circle"></i> Multi-cuisine Restaurant & Cafe</li>
+                        <li><i class="fas fa-check-circle"></i> Comfortable Rooms & Accommodations</li>
+                        <li><i class="fas fa-check-circle"></i> Adventure Activities & Outdoor Sports</li>
+                        <li><i class="fas fa-check-circle"></i> Bonfire & Seating Areas with Mountain Views</li>
+                    </ul>
+                </div>
+                <div class="about-features-grid" data-aos="fade-left">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Natural Beauty</h4>
+                        <p>Surrounded by pine forests & mountain peaks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Culinary Excellence</h4>
+                        <p>Multi-cuisine restaurant & cafe experience</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h4>Comfort & Luxury</h4>
+                        <p>Premium rooms with scenic views</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-campground"></i>
+                        </div>
+                        <h4>Adventure & Recreation</h4>
+                        <p>Bonfire, trekking, and outdoor activities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Services</h2>
+                <p>Complete Solutions for Every Occasion</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-icon"><i class="fas fa-guitar"></i></div>
+                    <h3>Kirtan & Bhajan</h3>
+                    <p>Spiritual and devotional gatherings with acoustic ambiance</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-ring"></i></div>
+                    <h3>Ring Ceremony</h3>
+                    <p>Intimate engagement ceremonies in a scenic setting</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <h3>Cocktail Party</h3>
+                    <p>Premium cocktail receptions with mountain views</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Marriage & Reception</h3>
+                    <p>Complete wedding packages in an enchanting mountain setting</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <h3>Anniversary & Celebration</h3>
+                    <p>Milestone celebrations with customized experiences</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon"><i class="fas fa-baby"></i></div>
+                    <h3>Mundan Ceremony</h3>
+                    <p>Traditional celebrations in a harmonious atmosphere</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon"><i class="fas fa-people-group"></i></div>
+                    <h3>Corporate Meetings</h3>
+                    <p>Fully equipped conference halls for business gatherings</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Restaurant & Cafe</h3>
+                    <p>Gourmet dining and casual cafe experience</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="service-icon"><i class="fas fa-bed"></i></div>
+                    <h3>Rooms & Stay</h3>
+                    <p>Comfortable accommodations with premium amenities</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                    <div class="service-icon"><i class="fas fa-mountain"></i></div>
+                    <h3>Adventure Activities</h3>
+                    <p>Trekking, camping, and outdoor sports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Visual Journey</h2>
+                <p>Experience Our Mountain Paradise</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWwtp2QQStDTujIMLpkJY520CrBGfze19nZw&s" alt="Mountain Wedding Setup">
+                    <div class="gallery-overlay">
+                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop" alt="Scenic Mountain View">
+                    <div class="gallery-overlay">
+                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRriUt8QpQ1J125Mw8D5kRI4EJCIaW0PgjZTg&s" alt="Wedding Reception">
+                    <div class="gallery-overlay">
+                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://thumbs.dreamstime.com/b/elegant-outdoor-wedding-setup-sunset-floral-decorations-glowing-lanterns-beautifully-arranged-venue-features-wooden-377851355.jpg" alt="Sunset at Venue">
+                    <div class="gallery-overlay">
+                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://www.sykescottages.co.uk/blog/wp-content/uploads/2014/11/Bonfire-Night.jpg" alt="Bonfire Evening">
+                    <div class="gallery-overlay">
+                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1604223190546-a43e4c7f29d7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8fDA%3D" alt="Mountain Landscape">
+                    <div class="gallery-overlay">
+                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-controls">
+            <button class="lightbox-nav" onclick="prevLightbox()"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-nav" onclick="nextLightbox()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Why Choose opening</h2>
+                <p>The Perfect Destination for Your Dreams</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-card" data-aos="fade-up">
+                    <div class="why-icon"><i class="fas fa-check-double"></i></div>
+                    <h3>All-in-One Venue</h3>
+                    <p>Events, dining, accommodation, and adventure all in one location</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-icon"><i class="fas fa-mountain"></i></div>
+                    <h3>Scenic Location</h3>
+                    <p>Breathtaking mountain views and natural beauty</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Affordable Luxury</h3>
+                    <p>Premium experience at competitive pricing</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Custom Decoration</h3>
+                    <p>Personalized setups as per your vision</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="why-icon"><i class="fas fa-spa"></i></div>
+                    <h3>Peaceful Environment</h3>
+                    <p>Serene settings perfect for every celebration</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="why-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Expert Support</h3>
+                    <p>Professional team for seamless event management</p>
+                </div>
+            </div>
+            <div class="stats-section" data-aos="fade-up">
+                <div class="stat">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">+ Events Hosted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="2500">0</div>
+                    <div class="stat-label">+ Happy Guests</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Satisfaction</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section id="investment" class="investment">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Investment Opportunity</h2>
+                <p>Be Part of a Growing Premium Venue Business</p>
+            </div>
+            <div class="investment-grid">
+                <div class="investment-card investment-main" data-aos="fade-up">
+                    <h3>Investment Overview</h3>
+                    <div class="investment-item">
+                        <span class="label">Initial Investment Required</span>
+                        <span class="value">₹25L – ₹50L</span>
+                    </div>
+                    <div class="investment-item">
+                        <span class="label">Expected ROI Timeline</span>
+                        <span class="value">1.5 – 2 Years</span>
+                    </div>
+                    <div class="investment-item">
+                        <span class="label">Monthly Revenue Potential</span>
+                        <span class="value">₹3L – ₹10L</span>
+                    </div>
+                    <div class="investment-item">
+                        <span class="label">Peak Season Booking Rate</span>
+                        <span class="value">80% – 95%</span>
+                    </div>
+                </div>
+                <div class="investment-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Revenue Streams</h3>
+                    <ul class="revenue-list">
+                        <li><strong>Event Hosting:</strong> ₹50K - ₹5L per event</li>
+                        <li><strong>Restaurant Operations:</strong> Daily recurring revenue</li>
+                        <li><strong>Room Bookings:</strong> ₹3K - ₹8K per night</li>
+                        <li><strong>Adventure Activities:</strong> Premium packages</li>
+                        <li><strong>Corporate Meetings:</strong> Day rates ₹20K - ₹50K</li>
+                        <li><strong>Merchandise & Services:</strong> Additional income</li>
+                    </ul>
+                </div>
+                <div class="investment-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Why This Investment?</h3>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> High demand in tourism sector</li>
+                        <li><i class="fas fa-check"></i> Multiple revenue streams</li>
+                        <li><i class="fas fa-check"></i> Growing event market in Uttarakhand</li>
+                        <li><i class="fas fa-check"></i> Favorable demographics & location</li>
+                        <li><i class="fas fa-check"></i> Strong operational model</li>
+                        <li><i class="fas fa-check"></i> Scalable business opportunity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="investment-chart" data-aos="fade-up">
+                <h3>Monthly Revenue Projection</h3>
+                <div class="chart-container">
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="width: 30%;"></div>
+                        <span class="bar-label">Off Season</span>
+                        <span class="bar-value">₹3L</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="width: 60%;"></div>
+                        <span class="bar-label">Regular Season</span>
+                        <span class="bar-value">₹6L</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="width: 100%;"></div>
+                        <span class="bar-label">Peak Season</span>
+                        <span class="bar-value">₹10L</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms & Experience Section -->
+    <section id="rooms" class="rooms">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Rooms & Experiences</h2>
+                <p>Comfort Meets Adventure</p>
+            </div>
+            <div class="rooms-grid">
+                <div class="room-card" data-aos="fade-up">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtkqH9UwtIaD6j9Gs0entZyyxrL3DLezHfeQ&s" alt="Deluxe Room">
+                    <div class="room-content">
+                        <h3>Deluxe Mountain Room</h3>
+                        <p>Spacious rooms with panoramic mountain views, modern amenities, and cozy interiors</p>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-wifi"></i> WiFi</span>
+                            <span><i class="fas fa-tv"></i> LED TV</span>
+                            <span><i class="fas fa-shower"></i> Attached Bath</span>
+                        </div>
+                        <p class="room-price">From ₹3,500/night</p>
+                    </div>
+                </div>
+                <div class="room-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.pinimg.com/736x/c9/31/db/c931db7c71f40af381acd1b4782a1f4f.jpg" alt="Bonfire Experience">
+                    <div class="room-content">
+                        <h3>Bonfire & Seating Area</h3>
+                        <p>Gather around the warmth of bonfire with mountain music and starry skies</p>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-fire"></i> Bonfire</span>
+                            <span><i class="fas fa-music"></i> Music</span>
+                            <span><i class="fas fa-chair"></i> Seating</span>
+                        </div>
+                        <p class="room-price">₹2,000/session</p>
+                    </div>
+                </div>
+                <div class="room-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Adventure Activities">
+                    <div class="room-content">
+                        <h3>Adventure Activities</h3>
+                        <p>Trekking, rock climbing, camping, and outdoor sports in pristine nature</p>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-hiking"></i> Trekking</span>
+                            <span><i class="fas fa-mountain"></i> Climbing</span>
+                            <span><i class="fas fa-tent"></i> Camping</span>
+                        </div>
+                        <p class="room-price">Custom Packages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>What Our Clients Say</h2>
+                <p>Real Stories, Real Happiness</p>
+            </div>
+            <div class="testimonials-carousel" data-aos="fade-up">
+                <div class="testimonial-card active">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Priya & Arjun</h4>
+                            <p>Wedding Reception</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"opening made our wedding day absolutely magical. The scenic backdrop, professional team, and exquisite food made every moment special. Highly recommended!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Rajesh Kumar</h4>
+                            <p>Corporate Event</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Perfect venue for our company's annual retreat. The conference facilities were top-notch and the natural ambiance boosted team morale significantly."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Meera Family</h4>
+                            <p>Family Celebration</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"We celebrated our anniversary here and it was beyond our expectations. The rooms are comfortable, food is delicious, and the view is stunning!"</p>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
+                <button class="carousel-btn" onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Get In Touch</h2>
+                <p>Let's Make Your Event Unforgettable</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-form" data-aos="fade-right">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Select Event Type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="engagement">Engagement</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info" data-aos="fade-left">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Dehradun Mokhmpur Road, Dehradun 248001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91-9634653304</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <!-- <p>info@royalhimalayanheights.com<br>events@royalhimalayanheights.com</p> -->
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon - Sun: 8:00 AM - 11:00 PM<br>Events: Available 24/7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section" data-aos="fade-up">
+                    <h4>opening</h4>
+                    <p>A premium event venue nestled in the scenic beauty of the Himalayas, creating unforgettable memories.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#investment">Investment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Event Hosting</a></li>
+                        <li><a href="#services">Wedding Venue</a></li>
+                        <li><a href="#services">Restaurant</a></li>
+                        <li><a href="#services">Rooms</a></li>
+                        <li><a href="#services">Adventure</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates and special offers</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 opening. All rights reserved.</p>
+                <p>Crafted with <i class="fas fa-heart"></i> for your special moments</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- External Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
