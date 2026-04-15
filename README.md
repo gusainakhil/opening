@@ -351,9 +351,9 @@ Dehradun
 
 ## 👨‍💻 Developer
 
-**Developed by:** [Everything Easy](https://everythingeasy.in/)
+**Developed by:** [EverythingEasy Technology](https://everythingeasy.in/)
 
-Everything Easy is a leading web development and digital solutions company specializing in:
+EverythingEasy Technology is a leading web development and digital solutions company specializing in:
 - Website design and development
 - SEO optimization
 - Digital marketing
@@ -490,12 +490,13 @@ For support, feature requests, or bug reports, please contact:
 - Unsplash for images
 - GSAP for animations
 - AOS for scroll animations
-- Everything Easy for development
+- EverythingEasy Technology for development
 
 ---
 
 > **Celebrate Every Moment in the Lap of Nature** 🏔️
 
 For more information, visit our website and follow us on social media!
+# opening
 # opening
 # opening
