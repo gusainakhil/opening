@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTestimonialCarousel();
     initCounterAnimation();
     initLightboxGallery();
+    initMountainParallax();
     animateOnScroll();
 });
 
@@ -404,6 +405,45 @@ document.querySelectorAll('a').forEach(link => {
         this.style.transform = 'translateY(0)';
     });
 });
+
+// ===================== MOUNTAIN PARALLAX EFFECT =====================
+function initMountainParallax() {
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        
+        // Hero content parallax
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        }
+
+        // Mountain silhouettes parallax
+        const heroBefore = document.querySelector('.hero-background::before');
+        const heroAfter = document.querySelector('.hero-background::after');
+        
+        if (scrollPosition < window.innerHeight) {
+            const parallaxStrength = 0.3;
+            const offset = scrollPosition * parallaxStrength;
+            
+            // Apply parallax to mountain layers
+            const mountLayers = document.querySelectorAll('[data-parallax]');
+            mountLayers.forEach(layer => {
+                const strength = parseFloat(layer.getAttribute('data-parallax'));
+                layer.style.transform = `translateY(${offset * strength}px)`;
+            });
+        }
+
+        // Section animations on scroll
+        document.querySelectorAll('section').forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+            
+            if (scrollPercent > 0 && scrollPercent < 1) {
+                section.style.opacity = Math.min(1, scrollPercent * 1.2);
+            }
+        });
+    });
+}
 
 // ===================== PARALLAX EFFECT =====================
 window.addEventListener('scroll', () => {

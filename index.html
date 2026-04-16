@@ -3,615 +3,1319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>opening - Premium Event Venue & Resort Cafe</title>
+    <title>Pahadi Basera – Premium Pahadi Event Venue, Dehradun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --saffron:   #E8651A;
+            --deep-red:  #8B1A1A;
+            --forest:    #2C5F2E;
+            --pine:      #1A3B1C;
+            --mustard:   #D4A017;
+            --ivory:     #F5EFE0;
+            --cream:     #FAF6ED;
+            --bark:      #5C3D2E;
+            --snow:      #FDFAF5;
+            --charcoal:  #1E1E1E;
+            --mist:      rgba(245,239,224,0.08);
+            --trans:     all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* ── CUSTOM CURSOR ── */
+        .cursor { position: fixed; width: 14px; height: 14px; background: var(--saffron); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: transform 0.1s; mix-blend-mode: multiply; }
+        .cursor-ring { position: fixed; width: 40px; height: 40px; border: 2px solid var(--saffron); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); transition: all 0.15s ease; opacity: 0.5; }
+
+        /* ── LOADER ── */
+        .loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--pine);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .loader-mandala {
+            width: 180px; height: 180px;
+            border: 3px solid var(--mustard);
+            border-radius: 50%;
+            position: relative;
+            animation: mandalaRotate 3s linear infinite;
+            box-shadow: 0 0 60px rgba(212,160,23,0.4), inset 0 0 60px rgba(212,160,23,0.1);
+        }
+        .loader-mandala::before, .loader-mandala::after {
+            content: '';
+            position: absolute; inset: 15px;
+            border: 2px solid var(--saffron);
+            border-radius: 50%;
+        }
+        .loader-mandala::after { inset: 35px; border-color: var(--mustard); animation: mandalaRotate 2s linear infinite reverse; }
+        @keyframes mandalaRotate { to { transform: rotate(360deg); } }
+        .loader-text {
+            font-family: 'Yatra One', cursive;
+            color: var(--ivory); font-size: 42px;
+            margin-top: 40px; letter-spacing: 4px;
+            animation: glowText 2s ease-in-out infinite;
+        }
+        .loader-sub { color: var(--mustard); font-size: 13px; letter-spacing: 6px; margin-top: 8px; text-transform: uppercase; }
+        @keyframes glowText { 0%,100% { text-shadow: 0 0 20px rgba(212,160,23,0.5); } 50% { text-shadow: 0 0 50px rgba(212,160,23,0.9); } }
+        .loader.hidden { animation: loaderFade 0.8s ease forwards; }
+        @keyframes loaderFade { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+        .loader-mountains {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 200px;
+        }
+
+        /* ── SCROLL PROGRESS ── */
+        .scroll-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--mustard), var(--saffron), var(--deep-red)); z-index: 1000; width: 0; }
+
+        /* ── NAV ── */
+        .navbar {
+            position: fixed; top: 0; width: 100%; z-index: 500;
+            padding: 22px 0; transition: var(--trans);
+        }
+        .navbar.scrolled {
+            background: rgba(28, 56, 30, 0.97);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        }
+        .nav-inner { max-width: 1280px; margin: auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { display: flex; flex-direction: column; }
+        .nav-logo-main { font-family: 'Yatra One', cursive; font-size: 26px; color: var(--ivory); letter-spacing: 2px; line-height: 1; }
+        .nav-logo-sub { font-size: 9px; color: var(--mustard); letter-spacing: 5px; text-transform: uppercase; }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a {
+            color: rgba(245,239,224,0.9); text-decoration: none; font-size: 13px; font-weight: 500;
+            letter-spacing: 1.5px; text-transform: uppercase; position: relative; padding-bottom: 4px;
+        }
+        .nav-links a::after { content: '◆'; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%) scale(0); color: var(--mustard); font-size: 6px; transition: var(--trans); }
+        .nav-links a:hover::after { transform: translateX(-50%) scale(1); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; }
+        .hamburger span { width: 24px; height: 2px; background: var(--ivory); transition: var(--trans); }
+
+        /* ── HERO ── */
+        .hero {
+            height: 100vh; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(26,59,28,0.55) 0%, rgba(28,24,20,0.75) 60%, rgba(28,24,20,0.95) 100%);
+        }
+        .hero-pattern {
+            position: absolute; inset: 0; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='1'%3E%3Cpath d='M30 0l3 3-3 3-3-3zm0 54l3 3-3 3-3-3zM0 30l3-3 3 3-3 3zm54 0l3-3 3 3-3 3zM15 15l3-3 3 3-3 3zm24 0l3-3 3 3-3 3zM15 45l3-3 3 3-3 3zm24 0l3-3 3 3-3 3z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; }
+        .hero-badge {
+            display: inline-block; border: 1px solid var(--mustard);
+            padding: 8px 24px; font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--mustard); margin-bottom: 28px;
+            animation: fadeSlideDown 1s ease 0.3s both;
+        }
+        .hero-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(52px, 8vw, 110px);
+            color: var(--ivory); line-height: 1.05; margin-bottom: 20px;
+            animation: fadeSlideUp 1s ease 0.5s both;
+        }
+        .hero-title em { font-style: italic; color: var(--mustard); }
+        .hero-devanagari {
+            font-family: 'Yatra One', cursive;
+            font-size: clamp(20px, 3vw, 36px);
+            color: rgba(245,239,224,0.7); margin-bottom: 32px;
+            animation: fadeSlideUp 1s ease 0.7s both;
+            letter-spacing: 2px;
+        }
+        .hero-sub {
+            font-size: 16px; color: rgba(245,239,224,0.7); max-width: 540px; margin: 0 auto 48px;
+            line-height: 1.9; font-weight: 300; letter-spacing: 0.5px;
+            animation: fadeSlideUp 1s ease 0.9s both;
+        }
+        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; animation: fadeSlideUp 1s ease 1.1s both; }
+        .btn {
+            padding: 16px 44px; font-size: 13px; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; border: none; cursor: none; transition: var(--trans); position: relative; overflow: hidden;
+        }
+        .btn-primary { background: var(--saffron); color: var(--ivory); }
+        .btn-primary:hover { background: var(--deep-red); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(232,101,26,0.4); }
+        .btn-outline { background: transparent; color: var(--ivory); border: 1.5px solid rgba(245,239,224,0.5); }
+        .btn-outline:hover { border-color: var(--mustard); color: var(--mustard); transform: translateY(-4px); }
+        .hero-scroll-hint {
+            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: rgba(245,239,224,0.5); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+            animation: fadeSlideUp 1s ease 1.5s both;
+        }
+        .scroll-line { width: 1px; height: 60px; background: linear-gradient(180deg, rgba(212,160,23,0.8), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
+
+        @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ── SECTION BASICS ── */
+        section { padding: 110px 0; position: relative; }
+        .container { max-width: 1200px; margin: auto; padding: 0 40px; }
+        .section-label { font-size: 11px; letter-spacing: 6px; text-transform: uppercase; color: var(--saffron); margin-bottom: 16px; display: block; }
+        .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 64px); line-height: 1.1; color: var(--pine); margin-bottom: 16px; }
+        .section-title em { font-style: italic; color: var(--saffron); }
+        .section-title.light { color: var(--ivory); }
+        .section-divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--saffron), var(--mustard)); margin-bottom: 24px; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── FLOATING PARTICLES ── */
+        .particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.35; }
+
+        /* ── ABOUT ── */
+        .about { background: var(--snow); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-img-stack { position: relative; height: 520px; }
+        .about-img-main {
+            position: absolute; right: 0; top: 0; width: 80%; height: 440px;
+            object-fit: cover; border-radius: 2px;
+            box-shadow: 20px 20px 60px rgba(44,95,46,0.2);
+        }
+        .about-img-accent {
+            position: absolute; left: 0; bottom: 0; width: 55%; height: 260px;
+            object-fit: cover; border-radius: 2px;
+            border: 6px solid var(--snow);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .about-badge-float {
+            position: absolute; top: 50%; left: -20px; transform: translateY(-50%);
+            background: var(--saffron); color: var(--ivory);
+            width: 100px; height: 100px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            box-shadow: 0 10px 30px rgba(232,101,26,0.4);
+            z-index: 10;
+            animation: floatBadge 4s ease-in-out infinite;
+        }
+        @keyframes floatBadge { 0%,100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-52%) translateX(3px); } }
+        .about-badge-float span:first-child { font-size: 28px; line-height: 1; }
+        .about-badge-float span:last-child { font-size: 11px; text-align: center; line-height: 1.3; }
+        .about-text { }
+        .about-desc { font-size: 16px; line-height: 1.9; color: #4a4a4a; margin-bottom: 32px; font-weight: 300; }
+        .about-features { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .about-features li { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--bark); }
+        .about-features li i { color: var(--saffron); font-size: 16px; }
+
+        /* ── PAHADI CULTURE STRIP ── */
+        .culture-strip { background: var(--pine); padding: 70px 0; overflow: hidden; }
+        .culture-strip-title { text-align: center; font-family: 'Yatra One', cursive; font-size: 18px; color: var(--mustard); letter-spacing: 4px; margin-bottom: 48px; }
+        .culture-icons { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .culture-icon-item { text-align: center; color: var(--ivory); opacity: 0.7; transition: var(--trans); cursor: none; }
+        .culture-icon-item:hover { opacity: 1; transform: translateY(-8px); }
+        .culture-icon-item .icon { font-size: 44px; margin-bottom: 12px; display: block; color: var(--mustard); }
+        .culture-icon-item span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; display: block; }
+
+        /* ── PAHADI FOOD ── */
+        .pahadi-food { background: var(--cream); }
+        .food-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 70px; }
+        .food-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .food-card {
+            position: relative; overflow: hidden; border-radius: 2px;
+            height: 420px; cursor: none;
+        }
+        .food-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .food-card:hover img { transform: scale(1.08); }
+        .food-card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(0deg, rgba(26,59,28,0.92) 0%, rgba(26,59,28,0.1) 50%, transparent 100%);
+            transition: var(--trans);
+        }
+        .food-card:hover .food-card-overlay { background: linear-gradient(0deg, rgba(26,59,28,0.95) 0%, rgba(26,59,28,0.4) 60%, rgba(26,59,28,0.1) 100%); }
+        .food-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; }
+        .food-card-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--mustard); margin-bottom: 8px; display: block; }
+        .food-card-name { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--ivory); margin-bottom: 8px; line-height: 1.2; }
+        .food-card-desc { font-size: 13px; color: rgba(245,239,224,0.7); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .food-card:hover .food-card-desc { max-height: 80px; }
+        .food-card.tall { grid-row: span 2; height: auto; min-height: 860px; }
+        .food-card.tall .food-card-name { font-size: 32px; }
+
+        /* ── SERVICES ── */
+        .services { background: var(--snow); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--border-color); }
+        .service-tile {
+            background: var(--snow); padding: 48px 36px;
+            position: relative; overflow: hidden; cursor: none;
+            transition: var(--trans);
+        }
+        .service-tile::before {
+            content: ''; position: absolute; left: 0; top: 0;
+            height: 3px; width: 0; background: var(--saffron);
+            transition: width 0.5s ease;
+        }
+        .service-tile:hover::before { width: 100%; }
+        .service-tile:hover { background: var(--cream); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(44,95,46,0.1); }
+        .service-num { font-family: 'DM Serif Display', serif; font-size: 56px; color: rgba(44,95,46,0.06); line-height: 1; margin-bottom: -10px; }
+        .service-icon-wrap { width: 56px; height: 56px; background: rgba(232,101,26,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: var(--trans); }
+        .service-tile:hover .service-icon-wrap { background: var(--saffron); }
+        .service-icon-wrap i { color: var(--saffron); font-size: 22px; transition: var(--trans); }
+        .service-tile:hover .service-icon-wrap i { color: var(--ivory); }
+        .service-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--pine); margin-bottom: 12px; }
+        .service-desc { font-size: 14px; color: #6a6a6a; line-height: 1.7; }
+
+        /* ── GALLERY ── */
+        .gallery { background: var(--charcoal); padding: 110px 0; }
+        .gallery .section-title { color: var(--ivory); }
+        .gallery-masonry { columns: 3; gap: 16px; margin-top: 60px; }
+        .gallery-item { break-inside: avoid; margin-bottom: 16px; overflow: hidden; position: relative; cursor: none; }
+        .gallery-item img { width: 100%; display: block; transition: transform 0.7s ease; filter: brightness(0.85); }
+        .gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
+        .gallery-item-overlay {
+            position: absolute; inset: 0; background: rgba(232,101,26,0.7);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: var(--trans);
+        }
+        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+        .gallery-item-overlay i { color: white; font-size: 28px; }
+
+        /* ── WHY US ── */
+        .why-us { background: var(--forest); overflow: hidden; }
+        .why-us-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center; }
+        .why-us-img { position: relative; }
+        .why-us-img img { width: 100%; height: 600px; object-fit: cover; }
+        .why-us-img::before {
+            content: ''; position: absolute; inset: -20px;
+            border: 2px solid rgba(212,160,23,0.3);
+            z-index: -1;
+        }
+        .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .why-card {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(212,160,23,0.15);
+            padding: 28px 24px; transition: var(--trans); cursor: none;
+        }
+        .why-card:hover { background: rgba(255,255,255,0.1); border-color: var(--mustard); transform: translateY(-5px); }
+        .why-card-icon { font-size: 30px; color: var(--mustard); margin-bottom: 14px; display: block; }
+        .why-card-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ivory); margin-bottom: 8px; }
+        .why-card-text { font-size: 13px; color: rgba(245,239,224,0.65); line-height: 1.7; }
+
+        /* ── STATS ── */
+        .stats { background: var(--pine); padding: 80px 0; }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+        .stat-item { padding: 40px 20px; border-right: 1px solid rgba(212,160,23,0.2); }
+        .stat-item:last-child { border-right: none; }
+        .stat-num { font-family: 'DM Serif Display', serif; font-size: 70px; color: var(--mustard); line-height: 1; display: block; }
+        .stat-label { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,239,224,0.6); margin-top: 8px; display: block; }
+
+        /* ── INVESTMENT ── */
+        .investment { background: var(--cream); }
+        .invest-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; }
+        .invest-main { background: var(--pine); padding: 60px; position: relative; overflow: hidden; }
+        .invest-main::before { content: ''; position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; border: 40px solid rgba(212,160,23,0.1); border-radius: 50%; }
+        .invest-main::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 180px; height: 180px; border: 30px solid rgba(232,101,26,0.1); border-radius: 50%; }
+        .invest-item { padding: 22px 0; border-bottom: 1px solid rgba(212,160,23,0.15); display: flex; justify-content: space-between; align-items: center; }
+        .invest-item:last-child { border-bottom: none; }
+        .invest-label { font-size: 13px; color: rgba(245,239,224,0.65); letter-spacing: 0.5px; }
+        .invest-value { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--mustard); }
+        .invest-sidebar { display: flex; flex-direction: column; gap: 24px; }
+        .invest-card { padding: 36px; border: 1px solid var(--border-color); background: var(--snow); }
+        .invest-card h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--pine); margin-bottom: 20px; }
+        .invest-list { list-style: none; }
+        .invest-list li { padding: 10px 0; font-size: 14px; color: #555; border-bottom: 1px solid #f0ece0; display: flex; align-items: center; gap: 10px; }
+        .invest-list li:last-child { border-bottom: none; }
+        .invest-list li i { color: var(--saffron); font-size: 13px; }
+
+        /* ── ROOMS ── */
+        .rooms { background: var(--snow); }
+        .rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .room-card { border: 1px solid #e8e0cd; overflow: hidden; transition: var(--trans); cursor: none; }
+        .room-card:hover { box-shadow: 0 30px 80px rgba(44,95,46,0.15); transform: translateY(-8px); }
+        .room-card-img { overflow: hidden; height: 260px; }
+        .room-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .room-card:hover .room-card-img img { transform: scale(1.08); }
+        .room-card-body { padding: 32px; }
+        .room-card-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--saffron); margin-bottom: 10px; display: block; }
+        .room-card-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--pine); margin-bottom: 10px; }
+        .room-card-desc { font-size: 13px; color: #777; line-height: 1.7; margin-bottom: 20px; }
+        .room-amenities { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .room-amenities span { font-size: 12px; color: var(--bark); display: flex; align-items: center; gap: 5px; }
+        .room-amenities i { color: var(--saffron); }
+        .room-price { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--saffron); }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials { background: var(--charcoal); padding: 110px 0; }
+        .testimonials .section-label { color: var(--mustard); }
+        .testimonials .section-title { color: var(--ivory); }
+        .testimonials-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 60px; }
+        .testi-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 36px; transition: var(--trans); }
+        .testi-card:hover { background: rgba(255,255,255,0.08); border-color: var(--mustard); transform: translateY(-5px); }
+        .testi-stars { color: var(--mustard); margin-bottom: 20px; font-size: 14px; }
+        .testi-text { font-size: 15px; color: rgba(245,239,224,0.75); line-height: 1.8; font-style: italic; margin-bottom: 28px; }
+        .testi-author { display: flex; align-items: center; gap: 14px; }
+        .testi-avatar { width: 46px; height: 46px; background: var(--saffron); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+        .testi-name { font-weight: 600; color: var(--ivory); font-size: 14px; }
+        .testi-role { font-size: 12px; color: rgba(245,239,224,0.4); letter-spacing: 1px; }
+
+        /* ── CONTACT ── */
+        .contact { background: var(--cream); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .contact-form-wrap { }
+        .form-field { margin-bottom: 24px; }
+        .form-field label { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--saffron); margin-bottom: 8px; }
+        .form-field input, .form-field select, .form-field textarea {
+            width: 100%; padding: 16px 0; border: none; border-bottom: 1.5px solid #d8d0be;
+            background: transparent; font-family: 'Jost', sans-serif; font-size: 15px; color: var(--charcoal);
+            transition: var(--trans); outline: none;
+        }
+        .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--saffron); }
+        .form-field textarea { resize: none; height: 100px; }
+        .contact-info-wrap { }
+        .contact-info-wrap p.big { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--pine); margin-bottom: 12px; line-height: 1.3; }
+        .contact-info-wrap p.sub { font-size: 15px; color: #777; line-height: 1.8; margin-bottom: 44px; }
+        .contact-detail { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+        .contact-detail-icon { width: 48px; height: 48px; background: rgba(232,101,26,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-detail-icon i { color: var(--saffron); font-size: 18px; }
+        .contact-detail-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 4px; }
+        .contact-detail-val { font-size: 16px; font-weight: 500; color: var(--pine); }
+
+        /* ── FOOTER ── */
+        .footer { background: var(--pine); padding: 70px 0 30px; }
+        .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-brand { }
+        .footer-logo { font-family: 'Yatra One', cursive; font-size: 28px; color: var(--ivory); margin-bottom: 12px; display: block; }
+        .footer-logo-sub { font-size: 10px; letter-spacing: 4px; color: var(--mustard); text-transform: uppercase; margin-bottom: 20px; display: block; }
+        .footer-brand p { font-size: 13px; color: rgba(245,239,224,0.55); line-height: 1.8; }
+        .footer-col h5 { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--mustard); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { font-size: 13px; color: rgba(245,239,224,0.55); text-decoration: none; transition: var(--trans); }
+        .footer-col ul li a:hover { color: var(--mustard); }
+        .footer-bottom { border-top: 1px solid rgba(245,239,224,0.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-size: 12px; color: rgba(245,239,224,0.35); }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 38px; height: 38px; border: 1px solid rgba(245,239,224,0.15); display: flex; align-items: center; justify-content: center; color: rgba(245,239,224,0.5); font-size: 14px; transition: var(--trans); }
+        .social-links a:hover { background: var(--saffron); border-color: var(--saffron); color: white; }
+
+        /* ── BACK TO TOP ── */
+        .btt { position: fixed; bottom: 36px; right: 36px; width: 52px; height: 52px; background: var(--saffron); color: white; display: flex; align-items: center; justify-content: center; cursor: none; opacity: 0; visibility: hidden; transition: var(--trans); z-index: 400; }
+        .btt.show { opacity: 1; visibility: visible; }
+        .btt:hover { background: var(--deep-red); transform: translateY(-4px); }
+
+        /* ── LIGHTBOX ── */
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 8000; display: none; align-items: center; justify-content: center; }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+        .lightbox-close { position: absolute; top: 28px; right: 36px; color: white; font-size: 34px; cursor: none; background: none; border: none; opacity: 0.7; transition: var(--trans); }
+        .lightbox-close:hover { opacity: 1; transform: rotate(90deg); }
+
+        /* ── MARQUEE ── */
+        .marquee-strip { background: var(--saffron); padding: 18px 0; overflow: hidden; }
+        .marquee-inner { display: flex; gap: 60px; animation: marquee 20s linear infinite; white-space: nowrap; }
+        .marquee-inner span { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--ivory); display: flex; align-items: center; gap: 20px; }
+        .marquee-inner span::after { content: '◆'; font-size: 8px; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── PARALLAX SECTION ── */
+        .parallax-cta {
+            position: relative; height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .parallax-cta-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=700&fit=crop') center/cover no-repeat; transform: translateY(0); will-change: transform; }
+        .parallax-cta-overlay { position: absolute; inset: 0; background: rgba(26,59,28,0.78); }
+        .parallax-cta-content { position: relative; text-align: center; }
+        .parallax-cta-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 72px); color: var(--ivory); margin-bottom: 20px; }
+        .parallax-cta-content h2 em { font-style: italic; color: var(--mustard); }
+        .parallax-cta-content p { font-size: 16px; color: rgba(245,239,224,0.7); margin-bottom: 36px; }
+
+        /* ── ANIMATED BORDER ── */
+        @keyframes borderGlow { 0%,100% { box-shadow: 0 0 0 rgba(212,160,23,0); } 50% { box-shadow: 0 0 30px rgba(212,160,23,0.4); } }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .about-grid, .invest-grid, .why-us-inner, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+            .food-grid { grid-template-columns: 1fr 1fr; }
+            .food-card.tall { grid-column: span 2; min-height: 500px; }
+            .gallery-masonry { columns: 2; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .rooms-grid { grid-template-columns: 1fr 1fr; }
+            .testimonials-wrap { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: var(--pine); padding: 30px 40px; gap: 20px; }
+            .nav-links.open { display: flex; }
+            .hamburger { display: flex; }
+            .hero-title { font-size: clamp(38px, 10vw, 72px); }
+            .food-grid, .services-grid, .stats-row, .rooms-grid { grid-template-columns: 1fr; }
+            .food-card.tall { min-height: 400px; }
+            .gallery-masonry { columns: 1; }
+            .footer-top { grid-template-columns: 1fr; gap: 30px; }
+            .why-cards { grid-template-columns: 1fr; }
+            .about-img-stack { height: 350px; }
+            .about-img-main { width: 100%; }
+            .about-img-accent { display: none; }
+            .about-badge-float { left: 50%; top: auto; bottom: -20px; transform: translateX(-50%); }
+            .culture-icons { gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            section { padding: 70px 0; }
+            .container { padding: 0 24px; }
+            body { cursor: auto; }
+            .cursor, .cursor-ring { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Loading Animation -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="mountain-loader"></div>
-            <p>opening</p>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+    <svg class="loader-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,200 L0,140 L120,60 L200,110 L300,40 L420,100 L540,20 L620,90 L720,10 L820,80 L940,30 L1040,95 L1160,50 L1280,110 L1380,55 L1440,80 L1440,200 Z" fill="rgba(212,160,23,0.15)"/>
+        <path d="M0,200 L0,160 L80,110 L180,130 L280,90 L380,120 L480,70 L560,110 L700,60 L800,100 L900,50 L1000,90 L1100,40 L1200,80 L1300,55 L1440,100 L1440,200 Z" fill="rgba(44,95,46,0.2)"/>
+        <path d="M0,200 L0,180 L100,155 L200,165 L350,140 L500,160 L600,130 L750,155 L900,125 L1050,150 L1200,135 L1350,155 L1440,145 L1440,200 Z" fill="rgba(26,59,28,0.3)"/>
+    </svg>
+    <div class="loader-mandala"></div>
+    <div class="loader-text">पहाड़ी बसेरा</div>
+    <div class="loader-sub">Pahadi Basera · Dehradun</div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <span class="nav-logo-main">पहाड़ी बसेरा</span>
+            <span class="nav-logo-sub">Pahadi Basera</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#food">Pahadi Food</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#investment">Invest</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
     </div>
+</nav>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-mountain"></i>
-                <span>opening</span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#why-us" class="nav-link">Why Choose Us</a></li>
-                <li><a href="#investment" class="nav-link">Investment</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <video autoplay muted loop class="hero-video">
-                <source src="https://cdn.pixabay.com/video/2024/02/25/201947-916877801_large.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title" data-aos="fade-up">Celebrate Every Moment in the Lap of Nature</h1>
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">A premium event cafe & venue for all your special occasions in the majestic Himalayas</p>
-            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
-                <button class="btn btn-primary" onclick="scrollToSection('contact')">Book Your Event</button>
-                <button class="btn btn-secondary" onclick="scrollToSection('investment')">Contact Investor</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>About opening</h2>
-                <p>Where Mountains Meet Celebrations</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text" data-aos="fade-right">
-                    <h3>Your Complete Event Destination</h3>
-                    <p>opening is a premium multi-purpose venue nestled in the scenic beauty of Uttarakhand. We offer a perfect blend of:</p>
-                    <ul class="about-features">
-                        <li><i class="fas fa-check-circle"></i> Premium Event Venue & Conference Halls</li>
-                        <li><i class="fas fa-check-circle"></i> Multi-cuisine Restaurant & Cafe</li>
-                        <li><i class="fas fa-check-circle"></i> Comfortable Rooms & Accommodations</li>
-                        <li><i class="fas fa-check-circle"></i> Adventure Activities & Outdoor Sports</li>
-                        <li><i class="fas fa-check-circle"></i> Bonfire & Seating Areas with Mountain Views</li>
-                    </ul>
-                </div>
-                <div class="about-features-grid" data-aos="fade-left">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h4>Natural Beauty</h4>
-                        <p>Surrounded by pine forests & mountain peaks</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h4>Culinary Excellence</h4>
-                        <p>Multi-cuisine restaurant & cafe experience</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bed"></i>
-                        </div>
-                        <h4>Comfort & Luxury</h4>
-                        <p>Premium rooms with scenic views</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-campground"></i>
-                        </div>
-                        <h4>Adventure & Recreation</h4>
-                        <p>Bonfire, trekking, and outdoor activities</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Services</h2>
-                <p>Complete Solutions for Every Occasion</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up">
-                    <div class="service-icon"><i class="fas fa-guitar"></i></div>
-                    <h3>Kirtan & Bhajan</h3>
-                    <p>Spiritual and devotional gatherings with acoustic ambiance</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon"><i class="fas fa-ring"></i></div>
-                    <h3>Ring Ceremony</h3>
-                    <p>Intimate engagement ceremonies in a scenic setting</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
-                    <h3>Cocktail Party</h3>
-                    <p>Premium cocktail receptions with mountain views</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon"><i class="fas fa-heart"></i></div>
-                    <h3>Marriage & Reception</h3>
-                    <p>Complete wedding packages in an enchanting mountain setting</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
-                    <h3>Anniversary & Celebration</h3>
-                    <p>Milestone celebrations with customized experiences</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon"><i class="fas fa-baby"></i></div>
-                    <h3>Mundan Ceremony</h3>
-                    <p>Traditional celebrations in a harmonious atmosphere</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon"><i class="fas fa-people-group"></i></div>
-                    <h3>Corporate Meetings</h3>
-                    <p>Fully equipped conference halls for business gatherings</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
-                    <div class="service-icon"><i class="fas fa-utensils"></i></div>
-                    <h3>Restaurant & Cafe</h3>
-                    <p>Gourmet dining and casual cafe experience</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="800">
-                    <div class="service-icon"><i class="fas fa-bed"></i></div>
-                    <h3>Rooms & Stay</h3>
-                    <p>Comfortable accommodations with premium amenities</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="900">
-                    <div class="service-icon"><i class="fas fa-mountain"></i></div>
-                    <h3>Adventure Activities</h3>
-                    <p>Trekking, camping, and outdoor sports</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Visual Journey</h2>
-                <p>Experience Our Mountain Paradise</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-aos="fade-up">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWwtp2QQStDTujIMLpkJY520CrBGfze19nZw&s" alt="Mountain Wedding Setup">
-                    <div class="gallery-overlay">
-                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop" alt="Scenic Mountain View">
-                    <div class="gallery-overlay">
-                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRriUt8QpQ1J125Mw8D5kRI4EJCIaW0PgjZTg&s" alt="Wedding Reception">
-                    <div class="gallery-overlay">
-                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://thumbs.dreamstime.com/b/elegant-outdoor-wedding-setup-sunset-floral-decorations-glowing-lanterns-beautifully-arranged-venue-features-wooden-377851355.jpg" alt="Sunset at Venue">
-                    <div class="gallery-overlay">
-                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://www.sykescottages.co.uk/blog/wp-content/uploads/2014/11/Bonfire-Night.jpg" alt="Bonfire Evening">
-                    <div class="gallery-overlay">
-                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1604223190546-a43e4c7f29d7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8fDA%3D" alt="Mountain Landscape">
-                    <div class="gallery-overlay">
-                        <button class="btn-gallery" onclick="openLightbox(this)"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img id="lightboxImg" src="" alt="">
-        <div class="lightbox-controls">
-            <button class="lightbox-nav" onclick="prevLightbox()"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-nav" onclick="nextLightbox()"><i class="fas fa-chevron-right"></i></button>
+<!-- Hero -->
+<section id="home" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://cdn.pixabay.com/video/2024/02/25/201947-916877801_large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Uttarakhand's Finest Pahadi Venue</div>
+        <h1 class="hero-title">Celebrate in the<br><em>Lap of Mountains</em></h1>
+        <p class="hero-devanagari">पहाड़ों की गोद में आपका स्वागत है</p>
+        <p class="hero-sub">A premium Pahadi event cafe & venue where the aroma of Kafal meets the rhythm of Jhora — nestled in the majestic Himalayas of Dehradun</p>
+        <div class="hero-btns">
+            <button class="btn btn-primary" onclick="scrollTo('contact')">Book Your Event</button>
+            <button class="btn btn-outline" onclick="scrollTo('food')">Explore Pahadi Cuisine</button>
         </div>
     </div>
+    <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
 
-    <!-- Why Choose Us Section -->
-    <section id="why-us" class="why-us">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Why Choose opening</h2>
-                <p>The Perfect Destination for Your Dreams</p>
-            </div>
-            <div class="why-us-grid">
-                <div class="why-card" data-aos="fade-up">
-                    <div class="why-icon"><i class="fas fa-check-double"></i></div>
-                    <h3>All-in-One Venue</h3>
-                    <p>Events, dining, accommodation, and adventure all in one location</p>
-                </div>
-                <div class="why-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="why-icon"><i class="fas fa-mountain"></i></div>
-                    <h3>Scenic Location</h3>
-                    <p>Breathtaking mountain views and natural beauty</p>
-                </div>
-                <div class="why-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="why-icon"><i class="fas fa-crown"></i></div>
-                    <h3>Affordable Luxury</h3>
-                    <p>Premium experience at competitive pricing</p>
-                </div>
-                <div class="why-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="why-icon"><i class="fas fa-palette"></i></div>
-                    <h3>Custom Decoration</h3>
-                    <p>Personalized setups as per your vision</p>
-                </div>
-                <div class="why-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="why-icon"><i class="fas fa-spa"></i></div>
-                    <h3>Peaceful Environment</h3>
-                    <p>Serene settings perfect for every celebration</p>
-                </div>
-                <div class="why-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="why-icon"><i class="fas fa-headset"></i></div>
-                    <h3>Expert Support</h3>
-                    <p>Professional team for seamless event management</p>
+<!-- Marquee -->
+<div class="marquee-strip">
+    <div class="marquee-inner" id="marqueeInner">
+        <span>Pahadi Wedding Venue</span>
+        <span>Authentic Kumaoni & Garhwali Cuisine</span>
+        <span>Mountain Bonfire Nights</span>
+        <span>Jhora & Chaufula Dance</span>
+        <span>Kafal & Buransh Specials</span>
+        <span>Corporate Retreats</span>
+        <span>Adventure Activities</span>
+        <span>Pahadi Wedding Venue</span>
+        <span>Authentic Kumaoni & Garhwali Cuisine</span>
+        <span>Mountain Bonfire Nights</span>
+        <span>Jhora & Chaufula Dance</span>
+        <span>Kafal & Buransh Specials</span>
+        <span>Corporate Retreats</span>
+        <span>Adventure Activities</span>
+    </div>
+</div>
+
+<!-- About -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-stack reveal">
+                <img class="about-img-main" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&h=600&fit=crop" alt="Himalayan venue">
+                <img class="about-img-accent" src="https://images.unsplash.com/photo-1542359649-31e03cd4d909?w=400&h=300&fit=crop" alt="Traditional Pahadi culture">
+                <div class="about-badge-float">
+                    <span>25+</span>
+                    <span>Years in Hills</span>
                 </div>
             </div>
-            <div class="stats-section" data-aos="fade-up">
-                <div class="stat">
-                    <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-label">+ Events Hosted</div>
+            <div class="about-text reveal" style="transition-delay:0.2s">
+                <span class="section-label">Our Story</span>
+                <h2 class="section-title">Where <em>Pahadi Soul</em> Meets Every Occasion</h2>
+                <div class="section-divider"></div>
+                <p class="about-desc">
+                    Pahadi Basera is not just a venue — it is a living tribute to the spirit of Uttarakhand. Born from the mountains of Dehradun, we blend the warmth of Garhwali hospitality with modern elegance, offering you the most authentic Pahadi experience for every celebration.
+                </p>
+                <p class="about-desc">
+                    From the earthy scent of pine to the melodious folk of Dhol-Damau, every corner of Pahadi Basera breathes the culture of the hills. Our chefs craft traditional recipes — Aloo Ke Gutke, Kafli, Chainsoo — using ingredients sourced straight from Himalayan farms.
+                </p>
+                <ul class="about-features">
+                    <li><i class="fas fa-check-circle"></i> Authentic Garhwali & Kumaoni Hospitality</li>
+                    <li><i class="fas fa-check-circle"></i> Traditional Pahadi Cuisine & Modern Fine Dining</li>
+                    <li><i class="fas fa-check-circle"></i> Scenic Mountain & Forest Views</li>
+                    <li><i class="fas fa-check-circle"></i> Folk Music, Dance & Cultural Performances</li>
+                    <li><i class="fas fa-check-circle"></i> Bonfire Nights Under Himalayan Stars</li>
+                    <li><i class="fas fa-check-circle"></i> Adventure Activities & Trekking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Culture Strip -->
+<div class="culture-strip">
+    <div class="container">
+        <div class="culture-strip-title">— उत्तराखंड की संस्कृति —</div>
+        <div class="culture-icons">
+            <div class="culture-icon-item reveal">
+                <span class="icon">🥁</span>
+                <span>Dhol-Damau</span>
+            </div>
+            <div class="culture-icon-item reveal" style="transition-delay:0.1s">
+                <span class="icon">🌸</span>
+                <span>Buransh Festival</span>
+            </div>
+            <div class="culture-icon-item reveal" style="transition-delay:0.2s">
+                <span class="icon">🏔️</span>
+                <span>Himalayas</span>
+            </div>
+            <div class="culture-icon-item reveal" style="transition-delay:0.3s">
+                <span class="icon">🪘</span>
+                <span>Jhora Dance</span>
+            </div>
+            <div class="culture-icon-item reveal" style="transition-delay:0.4s">
+                <span class="icon">🌿</span>
+                <span>Kafal Berries</span>
+            </div>
+            <div class="culture-icon-item reveal" style="transition-delay:0.5s">
+                <span class="icon">🏹</span>
+                <span>Aipan Art</span>
+            </div>
+            <div class="culture-icon-item reveal" style="transition-delay:0.6s">
+                <span class="icon">🕯️</span>
+                <span>Harela Festival</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pahadi Food -->
+<section id="food" class="pahadi-food">
+    <div class="container">
+        <div class="food-header reveal">
+            <div>
+                <span class="section-label">Authentic Flavours</span>
+                <h2 class="section-title">Pahadi <em>Cuisine</em></h2>
+                <div class="section-divider"></div>
+            </div>
+            <p style="max-width:300px; font-size:14px; color:#777; line-height:1.8;">Handcrafted Garhwali & Kumaoni recipes passed down through generations — now on your plate.</p>
+        </div>
+        <div class="food-grid">
+            <div class="food-card tall reveal">
+                <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&h=900&fit=crop" alt="Pahadi Thali">
+                <div class="food-card-overlay"></div>
+                <div class="food-card-content">
+                    <span class="food-card-tag">Signature Dish</span>
+                    <div class="food-card-name">Pahadi Thali</div>
+                    <div class="food-card-desc">A royal feast — Aloo Ke Gutke, Kafli, Chainsoo Dal, Jhangore Ki Kheer, Bhatt Ki Churkani, all served on a traditional leaf plate with Madua roti.</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number" data-target="2500">0</div>
-                    <div class="stat-label">+ Happy Guests</div>
+            </div>
+            <div class="food-card reveal" style="transition-delay:0.1s">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&h=420&fit=crop" alt="Aloo Ke Gutke">
+                <div class="food-card-overlay"></div>
+                <div class="food-card-content">
+                    <span class="food-card-tag">Garhwali Classic</span>
+                    <div class="food-card-name">Aloo Ke Gutke</div>
+                    <div class="food-card-desc">Crispy mountain potatoes with pahadi spices and mustard oil.</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number" data-target="98">0</div>
-                    <div class="stat-label">% Satisfaction</div>
+            </div>
+            <div class="food-card reveal" style="transition-delay:0.2s">
+                <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=420&fit=crop" alt="Kafli">
+                <div class="food-card-overlay"></div>
+                <div class="food-card-content">
+                    <span class="food-card-tag">Mountain Greens</span>
+                    <div class="food-card-name">Kafli Saag</div>
+                    <div class="food-card-desc">Slow-cooked fenugreek & spinach in ghee — a Pahadi soul-warmer.</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number" data-target="15">0</div>
-                    <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="food-card reveal" style="transition-delay:0.3s">
+                <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&h=420&fit=crop" alt="Chainsoo Dal">
+                <div class="food-card-overlay"></div>
+                <div class="food-card-content">
+                    <span class="food-card-tag">Kumaoni Special</span>
+                    <div class="food-card-name">Chainsoo Dal</div>
+                    <div class="food-card-desc">Roasted black gram dal cooked with pahadi masalas and hill butter.</div>
+                </div>
+            </div>
+            <div class="food-card reveal" style="transition-delay:0.4s">
+                <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&h=420&fit=crop" alt="Jhangore Kheer">
+                <div class="food-card-overlay"></div>
+                <div class="food-card-content">
+                    <span class="food-card-tag">Dessert</span>
+                    <div class="food-card-name">Jhangore Ki Kheer</div>
+                    <div class="food-card-desc">Barnyard millet pudding with dry fruits and saffron — a royal Pahadi dessert.</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Investment Section -->
-    <section id="investment" class="investment">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Investment Opportunity</h2>
-                <p>Be Part of a Growing Premium Venue Business</p>
+<!-- Services -->
+<section id="services" class="services">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:70px;" class="reveal">
+            <span class="section-label">What We Offer</span>
+            <h2 class="section-title">Our <em>Services</em></h2>
+            <div class="section-divider" style="margin:0 auto;"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-tile reveal">
+                <div class="service-num">01</div>
+                <div class="service-icon-wrap"><i class="fas fa-heart"></i></div>
+                <div class="service-title">Pahadi Wedding</div>
+                <div class="service-desc">Authentic mountain weddings with Dhol-Damau, traditional Pahadi décor, and majestic Himalayan backdrops for your special day.</div>
             </div>
-            <div class="investment-grid">
-                <div class="investment-card investment-main" data-aos="fade-up">
-                    <h3>Investment Overview</h3>
-                    <div class="investment-item">
-                        <span class="label">Initial Investment Required</span>
-                        <span class="value">₹25L – ₹50L</span>
-                    </div>
-                    <div class="investment-item">
-                        <span class="label">Expected ROI Timeline</span>
-                        <span class="value">1.5 – 2 Years</span>
-                    </div>
-                    <div class="investment-item">
-                        <span class="label">Monthly Revenue Potential</span>
-                        <span class="value">₹3L – ₹10L</span>
-                    </div>
-                    <div class="investment-item">
-                        <span class="label">Peak Season Booking Rate</span>
-                        <span class="value">80% – 95%</span>
-                    </div>
+            <div class="service-tile reveal" style="transition-delay:0.1s">
+                <div class="service-num">02</div>
+                <div class="service-icon-wrap"><i class="fas fa-ring"></i></div>
+                <div class="service-title">Ring & Engagement</div>
+                <div class="service-desc">Intimate engagement ceremonies amidst pine forests and mountain vistas, with traditional Aipan art decorations.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.2s">
+                <div class="service-num">03</div>
+                <div class="service-icon-wrap"><i class="fas fa-people-group"></i></div>
+                <div class="service-title">Corporate Retreat</div>
+                <div class="service-desc">Executive team-building and conferences with modern AV equipment and the calm of Himalayan nature.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.3s">
+                <div class="service-num">04</div>
+                <div class="service-icon-wrap"><i class="fas fa-guitar"></i></div>
+                <div class="service-title">Kirtan & Bhajan</div>
+                <div class="service-desc">Sacred spiritual gatherings with Garhwali folk music, acoustic mountain ambiance, and devotional settings.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.4s">
+                <div class="service-num">05</div>
+                <div class="service-icon-wrap"><i class="fas fa-fire"></i></div>
+                <div class="service-title">Bonfire Evenings</div>
+                <div class="service-desc">Magical nights around roaring bonfires with Pahadi folk songs, mountain music, and starlit Himalayan skies.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.5s">
+                <div class="service-num">06</div>
+                <div class="service-icon-wrap"><i class="fas fa-utensils"></i></div>
+                <div class="service-title">Pahadi Restaurant</div>
+                <div class="service-desc">Curated Garhwali & Kumaoni menus with traditional thalis, modern café fare, and seasonal Pahadi ingredients.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.6s">
+                <div class="service-num">07</div>
+                <div class="service-icon-wrap"><i class="fas fa-bed"></i></div>
+                <div class="service-title">Mountain Stays</div>
+                <div class="service-desc">Comfortable Pahadi-style rooms with handwoven décor, panoramic valley views, and hill morning tranquility.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.7s">
+                <div class="service-num">08</div>
+                <div class="service-icon-wrap"><i class="fas fa-mountain"></i></div>
+                <div class="service-title">Trek & Adventure</div>
+                <div class="service-desc">Guided Himalayan treks, rock climbing, camping, and nature walks through dense Deodar and Rhododendron forests.</div>
+            </div>
+            <div class="service-tile reveal" style="transition-delay:0.8s">
+                <div class="service-num">09</div>
+                <div class="service-icon-wrap"><i class="fas fa-birthday-cake"></i></div>
+                <div class="service-title">Celebrations</div>
+                <div class="service-desc">Birthdays, anniversaries, Mundan & naming ceremonies — every milestone celebrated with Pahadi warmth and culture.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="reveal">
+            <span class="section-label" style="color:var(--mustard)">Visual Journey</span>
+            <h2 class="section-title" style="color:var(--ivory)">Pahadi <em>Moments</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="gallery-masonry">
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=400&fit=crop" alt="Mountain wedding">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.1s">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=700&fit=crop" alt="Himalayan peaks">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.2s">
+                <img src="https://images.unsplash.com/photo-1519677584237-752f8853252e?w=600&h=400&fit=crop" alt="Bonfire night">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.3s">
+                <img src="https://images.unsplash.com/photo-1542359649-31e03cd4d909?w=600&h=500&fit=crop" alt="Traditional décor">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.4s">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=800&fit=crop" alt="Mountain forest">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.5s">
+                <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=600&h=400&fit=crop" alt="Pahadi cuisine">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.6s">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=500&fit=crop" alt="Wedding ceremony">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item reveal" style="transition-delay:0.7s">
+                <img src="https://images.unsplash.com/photo-1501084817091-a4f3d1d19e07?w=600&h=400&fit=crop" alt="Sunset mountains">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Us -->
+<section class="why-us">
+    <div class="container">
+        <div class="why-us-inner">
+            <div class="why-us-img reveal">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=700&fit=crop" alt="Uttarakhand nature">
+            </div>
+            <div>
+                <div class="reveal" style="margin-bottom:50px;">
+                    <span class="section-label" style="color:var(--mustard)">Why Pahadi Basera</span>
+                    <h2 class="section-title light">The Pahadi<br><em>Difference</em></h2>
+                    <div class="section-divider"></div>
+                    <p style="font-size:15px; color:rgba(245,239,224,0.65); line-height:1.9; margin-top:10px;">We don't just host events. We curate experiences rooted in the living culture of Uttarakhand.</p>
                 </div>
-                <div class="investment-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Revenue Streams</h3>
-                    <ul class="revenue-list">
-                        <li><strong>Event Hosting:</strong> ₹50K - ₹5L per event</li>
-                        <li><strong>Restaurant Operations:</strong> Daily recurring revenue</li>
-                        <li><strong>Room Bookings:</strong> ₹3K - ₹8K per night</li>
-                        <li><strong>Adventure Activities:</strong> Premium packages</li>
-                        <li><strong>Corporate Meetings:</strong> Day rates ₹20K - ₹50K</li>
-                        <li><strong>Merchandise & Services:</strong> Additional income</li>
+                <div class="why-cards">
+                    <div class="why-card reveal"><span class="why-card-icon">🏔️</span><div class="why-card-title">True Pahadi Setting</div><div class="why-card-text">Surrounded by Deodar forests, Himalayan peaks, and the pure mountain air of Dehradun.</div></div>
+                    <div class="why-card reveal" style="transition-delay:0.1s"><span class="why-card-icon">🥁</span><div class="why-card-title">Cultural Performances</div><div class="why-card-text">Live Dhol-Damau, Jhora, Chaufula and Langvir folk art at your events.</div></div>
+                    <div class="why-card reveal" style="transition-delay:0.2s"><span class="why-card-icon">🍽️</span><div class="why-card-title">Authentic Cuisine</div><div class="why-card-text">Traditional Garhwali & Kumaoni recipes cooked with local mountain ingredients.</div></div>
+                    <div class="why-card reveal" style="transition-delay:0.3s"><span class="why-card-icon">🌿</span><div class="why-card-title">Farm-to-Table</div><div class="why-card-text">Kafal, Rhododendron, Ringal — Himalayan superfoods sourced from local hill farmers.</div></div>
+                    <div class="why-card reveal" style="transition-delay:0.4s"><span class="why-card-icon">🎨</span><div class="why-card-title">Aipan Art Décor</div><div class="why-card-text">Traditional Kumaoni Aipan art woven into every event décor for an authentic Pahadi touch.</div></div>
+                    <div class="why-card reveal" style="transition-delay:0.5s"><span class="why-card-icon">⛺</span><div class="why-card-title">All-in-One Venue</div><div class="why-card-text">Events, dining, accommodation, adventure — a complete Pahadi escape in one place.</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-row">
+            <div class="stat-item reveal"><span class="stat-num" data-target="500">0</span><span class="stat-label">Events Hosted</span></div>
+            <div class="stat-item reveal" style="transition-delay:0.1s"><span class="stat-num" data-target="2500">0</span><span class="stat-label">Happy Guests</span></div>
+            <div class="stat-item reveal" style="transition-delay:0.2s"><span class="stat-num" data-target="98">0</span><span class="stat-label">% Satisfaction</span></div>
+            <div class="stat-item reveal" style="transition-delay:0.3s"><span class="stat-num" data-target="15">0</span><span class="stat-label">Years in Hills</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- Parallax CTA -->
+<div class="parallax-cta">
+    <div class="parallax-cta-bg" id="parallaxBg"></div>
+    <div class="parallax-cta-overlay"></div>
+    <div class="parallax-cta-content reveal">
+        <h2>Your Dream Pahadi<br><em>Event Awaits</em></h2>
+        <p>From the peaks of Himalayas to the warmth of your celebration</p>
+        <button class="btn btn-primary" onclick="scrollTo('contact')">Start Planning</button>
+    </div>
+</div>
+
+<!-- Investment -->
+<section id="investment" class="investment">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:70px;" class="reveal">
+            <span class="section-label">Business Opportunity</span>
+            <h2 class="section-title">Invest in <em>Pahadi</em> Future</h2>
+            <div class="section-divider" style="margin:0 auto;"></div>
+        </div>
+        <div class="invest-grid">
+            <div class="invest-main reveal">
+                <span class="section-label" style="margin-bottom:30px; display:block;">Investment Overview</span>
+                <div class="invest-item">
+                    <span class="invest-label">Initial Investment</span>
+                    <span class="invest-value">₹25L – ₹50L</span>
+                </div>
+                <div class="invest-item">
+                    <span class="invest-label">Expected ROI Timeline</span>
+                    <span class="invest-value">1.5 – 2 Years</span>
+                </div>
+                <div class="invest-item">
+                    <span class="invest-label">Monthly Revenue Potential</span>
+                    <span class="invest-value">₹3L – ₹10L</span>
+                </div>
+                <div class="invest-item">
+                    <span class="invest-label">Peak Season Bookings</span>
+                    <span class="invest-value">80% – 95%</span>
+                </div>
+                <div class="invest-item">
+                    <span class="invest-label">Investor Contact</span>
+                    <span class="invest-value">+91-9634653304</span>
+                </div>
+                <div style="margin-top:36px;">
+                    <button class="btn btn-primary" style="width:100%; text-align:center; display:block; cursor:none;">Request Investor Deck</button>
+                </div>
+            </div>
+            <div class="invest-sidebar">
+                <div class="invest-card reveal" style="transition-delay:0.15s">
+                    <h4>Revenue Streams</h4>
+                    <ul class="invest-list">
+                        <li><i class="fas fa-check"></i> Event Hosting: ₹50K–₹5L per event</li>
+                        <li><i class="fas fa-check"></i> Pahadi Restaurant: Daily recurring</li>
+                        <li><i class="fas fa-check"></i> Room Bookings: ₹3K–₹8K/night</li>
+                        <li><i class="fas fa-check"></i> Adventure Packages: Premium rates</li>
+                        <li><i class="fas fa-check"></i> Corporate Retreats: ₹20K–₹50K/day</li>
+                        <li><i class="fas fa-check"></i> Cultural Events & Festivals</li>
                     </ul>
                 </div>
-                <div class="investment-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Why This Investment?</h3>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check"></i> High demand in tourism sector</li>
-                        <li><i class="fas fa-check"></i> Multiple revenue streams</li>
-                        <li><i class="fas fa-check"></i> Growing event market in Uttarakhand</li>
-                        <li><i class="fas fa-check"></i> Favorable demographics & location</li>
-                        <li><i class="fas fa-check"></i> Strong operational model</li>
-                        <li><i class="fas fa-check"></i> Scalable business opportunity</li>
+                <div class="invest-card reveal" style="transition-delay:0.3s">
+                    <h4>Why This Investment?</h4>
+                    <ul class="invest-list">
+                        <li><i class="fas fa-check"></i> Booming Uttarakhand tourism sector</li>
+                        <li><i class="fas fa-check"></i> Unique Pahadi cultural positioning</li>
+                        <li><i class="fas fa-check"></i> Multiple diversified revenue streams</li>
+                        <li><i class="fas fa-check"></i> Growing demand for authentic experiences</li>
+                        <li><i class="fas fa-check"></i> Scalable & replicable model</li>
+                        <li><i class="fas fa-check"></i> Year-round mountain tourism growth</li>
                     </ul>
                 </div>
             </div>
-            <div class="investment-chart" data-aos="fade-up">
-                <h3>Monthly Revenue Projection</h3>
-                <div class="chart-container">
-                    <div class="chart-bar">
-                        <div class="bar-fill" style="width: 30%;"></div>
-                        <span class="bar-label">Off Season</span>
-                        <span class="bar-value">₹3L</span>
+        </div>
+    </div>
+</section>
+
+<!-- Rooms -->
+<section id="rooms" class="rooms">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:70px;" class="reveal">
+            <span class="section-label">Stay & Explore</span>
+            <h2 class="section-title">Pahadi <em>Accommodations</em></h2>
+            <div class="section-divider" style="margin:0 auto;"></div>
+        </div>
+        <div class="rooms-grid">
+            <div class="room-card reveal">
+                <div class="room-card-img"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=350&fit=crop" alt="Pahadi Suite"></div>
+                <div class="room-card-body">
+                    <span class="room-card-tag">Mountain Suite</span>
+                    <div class="room-card-title">Pahadi Deluxe Room</div>
+                    <div class="room-card-desc">Handwoven Ringal décor, woolen carpets, and floor-to-ceiling windows opening to Himalayan panoramas.</div>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> LED TV</span>
+                        <span><i class="fas fa-shower"></i> Geyser Bath</span>
+                        <span><i class="fas fa-mug-hot"></i> Pahadi Tea</span>
                     </div>
-                    <div class="chart-bar">
-                        <div class="bar-fill" style="width: 60%;"></div>
-                        <span class="bar-label">Regular Season</span>
-                        <span class="bar-value">₹6L</span>
+                    <div class="room-price">From ₹3,500 / night</div>
+                </div>
+            </div>
+            <div class="room-card reveal" style="transition-delay:0.15s">
+                <div class="room-card-img"><img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=350&fit=crop" alt="Bonfire Experience"></div>
+                <div class="room-card-body">
+                    <span class="room-card-tag">Evening Experience</span>
+                    <div class="room-card-title">Bonfire Night Package</div>
+                    <div class="room-card-desc">Gather under Himalayan stars with roaring bonfires, live Pahadi folk music, and mountain chai.</div>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-fire"></i> Bonfire</span>
+                        <span><i class="fas fa-music"></i> Folk Music</span>
+                        <span><i class="fas fa-chair"></i> Pahadi Seating</span>
                     </div>
-                    <div class="chart-bar">
-                        <div class="bar-fill" style="width: 100%;"></div>
-                        <span class="bar-label">Peak Season</span>
-                        <span class="bar-value">₹10L</span>
+                    <div class="room-price">₹2,000 / session</div>
+                </div>
+            </div>
+            <div class="room-card reveal" style="transition-delay:0.3s">
+                <div class="room-card-img"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=350&fit=crop" alt="Trek Adventure"></div>
+                <div class="room-card-body">
+                    <span class="room-card-tag">Adventure Package</span>
+                    <div class="room-card-title">Himalayan Trek & Camp</div>
+                    <div class="room-card-desc">Guided treks through Deodar forests, Rhododendron trails, rock climbing, and overnight camping.</div>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-hiking"></i> Guided Trek</span>
+                        <span><i class="fas fa-mountain"></i> Climbing</span>
+                        <span><i class="fas fa-tent"></i> Camping</span>
                     </div>
+                    <div class="room-price">Custom Packages</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Rooms & Experience Section -->
-    <section id="rooms" class="rooms">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Rooms & Experiences</h2>
-                <p>Comfort Meets Adventure</p>
+<!-- Testimonials -->
+<section class="testimonials">
+    <div class="container">
+        <div class="reveal" style="text-align:center; margin-bottom:10px;">
+            <span class="section-label">Real Stories</span>
+            <h2 class="section-title" style="color:var(--ivory);">Guest <em>Voices</em></h2>
+            <div class="section-divider" style="margin:0 auto;"></div>
+        </div>
+        <div class="testimonials-wrap">
+            <div class="testi-card reveal">
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-text">"Hamari shaadi Pahadi Basera mein hui aur woh din humare jeevan ka sabse sundar din tha. Dhol-Damau ki thaap, pahadi thali ka swad — sab kuch anokha tha!"</div>
+                <div class="testi-author">
+                    <div class="testi-avatar"><i class="fas fa-user"></i></div>
+                    <div><div class="testi-name">Priya & Arjun Negi</div><div class="testi-role">Wedding · Dehradun</div></div>
+                </div>
             </div>
-            <div class="rooms-grid">
-                <div class="room-card" data-aos="fade-up">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtkqH9UwtIaD6j9Gs0entZyyxrL3DLezHfeQ&s" alt="Deluxe Room">
-                    <div class="room-content">
-                        <h3>Deluxe Mountain Room</h3>
-                        <p>Spacious rooms with panoramic mountain views, modern amenities, and cozy interiors</p>
-                        <div class="room-amenities">
-                            <span><i class="fas fa-wifi"></i> WiFi</span>
-                            <span><i class="fas fa-tv"></i> LED TV</span>
-                            <span><i class="fas fa-shower"></i> Attached Bath</span>
-                        </div>
-                        <p class="room-price">From ₹3,500/night</p>
-                    </div>
+            <div class="testi-card reveal" style="transition-delay:0.15s">
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-text">"The Pahadi thali was extraordinary — Chainsoo dal, Kafli, Jhangore ki kheer, all authentic. Our corporate team left energised and connected. Truly a mountain retreat."</div>
+                <div class="testi-author">
+                    <div class="testi-avatar"><i class="fas fa-user"></i></div>
+                    <div><div class="testi-name">Rajesh Rawat</div><div class="testi-role">Corporate Retreat · Delhi</div></div>
                 </div>
-                <div class="room-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://i.pinimg.com/736x/c9/31/db/c931db7c71f40af381acd1b4782a1f4f.jpg" alt="Bonfire Experience">
-                    <div class="room-content">
-                        <h3>Bonfire & Seating Area</h3>
-                        <p>Gather around the warmth of bonfire with mountain music and starry skies</p>
-                        <div class="room-amenities">
-                            <span><i class="fas fa-fire"></i> Bonfire</span>
-                            <span><i class="fas fa-music"></i> Music</span>
-                            <span><i class="fas fa-chair"></i> Seating</span>
-                        </div>
-                        <p class="room-price">₹2,000/session</p>
-                    </div>
-                </div>
-                <div class="room-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Adventure Activities">
-                    <div class="room-content">
-                        <h3>Adventure Activities</h3>
-                        <p>Trekking, rock climbing, camping, and outdoor sports in pristine nature</p>
-                        <div class="room-amenities">
-                            <span><i class="fas fa-hiking"></i> Trekking</span>
-                            <span><i class="fas fa-mountain"></i> Climbing</span>
-                            <span><i class="fas fa-tent"></i> Camping</span>
-                        </div>
-                        <p class="room-price">Custom Packages</p>
-                    </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:0.3s">
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-text">"Bonfire under the Himalayan stars with live Jhora music and local rhododendron chai — this is not a venue, it's a living Pahadi experience. We will come back every year!"</div>
+                <div class="testi-author">
+                    <div class="testi-avatar"><i class="fas fa-user"></i></div>
+                    <div><div class="testi-name">Meera Bisht Family</div><div class="testi-role">Anniversary · Nainital</div></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>What Our Clients Say</h2>
-                <p>Real Stories, Real Happiness</p>
-            </div>
-            <div class="testimonials-carousel" data-aos="fade-up">
-                <div class="testimonial-card active">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4>Priya & Arjun</h4>
-                            <p>Wedding Reception</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"opening made our wedding day absolutely magical. The scenic backdrop, professional team, and exquisite food made every moment special. Highly recommended!"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4>Rajesh Kumar</h4>
-                            <p>Corporate Event</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Perfect venue for our company's annual retreat. The conference facilities were top-notch and the natural ambiance boosted team morale significantly."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4>Meera Family</h4>
-                            <p>Family Celebration</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"We celebrated our anniversary here and it was beyond our expectations. The rooms are comfortable, food is delicious, and the view is stunning!"</p>
-                </div>
-            </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn" onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
-                <div class="carousel-dots" id="carouselDots"></div>
-                <button class="carousel-btn" onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
-            </div>
+<!-- Contact -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:80px;" class="reveal">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">Let's Plan Your<br><em>Pahadi Celebration</em></h2>
+            <div class="section-divider" style="margin:0 auto;"></div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Get In Touch</h2>
-                <p>Let's Make Your Event Unforgettable</p>
+        <div class="contact-grid">
+            <div class="contact-form-wrap reveal">
+                <form id="contactForm">
+                    <div class="form-field">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Pooja Negi" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+91 98XXX XXXXX" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="you@example.com">
+                    </div>
+                    <div class="form-field">
+                        <label>Event Type</label>
+                        <select required>
+                            <option value="">Choose your occasion</option>
+                            <option>Pahadi Wedding</option>
+                            <option>Ring Ceremony</option>
+                            <option>Corporate Retreat</option>
+                            <option>Birthday / Anniversary</option>
+                            <option>Kirtan / Bhajan</option>
+                            <option>Mundan Ceremony</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your event — date, guest count, special requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; cursor:none;">Send Message →</button>
+                </form>
             </div>
-            <div class="contact-wrapper">
-                <div class="contact-form" data-aos="fade-right">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" required>
-                        </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="">Select Event Type</option>
-                                <option value="wedding">Wedding</option>
-                                <option value="corporate">Corporate Event</option>
-                                <option value="engagement">Engagement</option>
-                                <option value="birthday">Birthday</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+            <div class="contact-info-wrap reveal" style="transition-delay:0.2s">
+                <p class="big">Come, Sit.<br>Let the Mountains Host You.</p>
+                <p class="sub">Our Pahadi team is ready to make your occasion truly unforgettable — with the warmth of the hills and the soul of Uttarakhand.</p>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><div class="contact-detail-label">Address</div><div class="contact-detail-val">Dehradun Mokhmpur Road, Dehradun 248001, Uttarakhand</div></div>
                 </div>
-                <div class="contact-info" data-aos="fade-left">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <p>Dehradun Mokhmpur Road, Dehradun 248001</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+91-9634653304</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <!-- <p>info@royalhimalayanheights.com<br>events@royalhimalayanheights.com</p> -->
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Business Hours</h4>
-                            <p>Mon - Sun: 8:00 AM - 11:00 PM<br>Events: Available 24/7</p>
-                        </div>
-                    </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+                    <div><div class="contact-detail-label">Phone</div><div class="contact-detail-val">+91-9634653304</div></div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+                    <div><div class="contact-detail-label">Hours</div><div class="contact-detail-val">Daily 8 AM – 11 PM · Events 24/7</div></div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div><div class="contact-detail-label">WhatsApp</div><div class="contact-detail-val">+91-9634653304</div></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section" data-aos="fade-up">
-                    <h4>opening</h4>
-                    <p>A premium event venue nestled in the scenic beauty of the Himalayas, creating unforgettable memories.</p>
-                    <div class="social-links">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#investment">Investment</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Event Hosting</a></li>
-                        <li><a href="#services">Wedding Venue</a></li>
-                        <li><a href="#services">Restaurant</a></li>
-                        <li><a href="#services">Rooms</a></li>
-                        <li><a href="#services">Adventure</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe to get updates and special offers</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="footer-logo">पहाड़ी बसेरा</span>
+                <span class="footer-logo-sub">Pahadi Basera · Dehradun</span>
+                <p>A living tribute to the spirit of Uttarakhand — where Pahadi culture, authentic cuisine, and mountain celebrations unite in the lap of the Himalayas.</p>
+                <div class="social-links" style="margin-top:24px;">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 opening. All rights reserved.</p>
-                <p>Crafted with <i class="fas fa-heart"></i> for your special moments</p>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#food">Pahadi Cuisine</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#investment">Investment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Pahadi Dishes</h5>
+                <ul>
+                    <li><a href="#">Aloo Ke Gutke</a></li>
+                    <li><a href="#">Kafli Saag</a></li>
+                    <li><a href="#">Chainsoo Dal</a></li>
+                    <li><a href="#">Jhangore Ki Kheer</a></li>
+                    <li><a href="#">Bhatt Ki Dal</a></li>
+                    <li><a href="#">Madua Roti</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="#">Pahadi Wedding</a></li>
+                    <li><a href="#">Corporate Retreat</a></li>
+                    <li><a href="#">Mountain Stay</a></li>
+                    <li><a href="#">Bonfire Nights</a></li>
+                    <li><a href="#">Trek & Adventure</a></li>
+                    <li><a href="#">Kirtan & Bhajan</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <p>© 2026 Pahadi Basera, Dehradun. All rights reserved.</p>
+            <p style="color:rgba(245,239,224,0.3);">Crafted with ❤️ for the Hills of Uttarakhand</p>
+        </div>
+    </div>
+</footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+<!-- Back to Top -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- External Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLB()">&times;</button>
+    <img id="lbImg" src="" alt="">
+</div>
+
+<!-- Notification -->
+<div id="toast" style="position:fixed;top:100px;right:28px;background:var(--forest);color:var(--ivory);padding:18px 28px;font-size:14px;z-index:9999;display:none;box-shadow:0 10px 40px rgba(0,0,0,0.3);"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+// ── CURSOR ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+(function ringAnim() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(ringAnim); })();
+document.querySelectorAll('a,button,.gallery-item,.food-card,.service-tile,.why-card,.testi-card,.room-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.8)'; cursor.style.transform = 'translate(-50%,-50%) scale(0.5)'; });
+    el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
+});
+
+// ── LOADER ──
+window.addEventListener('load', () => {
+    setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 2600);
+});
+
+// ── NAV ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollBar').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+    document.getElementById('btt').classList.toggle('show', window.scrollY > 500);
+});
+document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ── SMOOTH SCROLL ──
+function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+// ── REVEAL ON SCROLL ──
+const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── COUNTER ANIMATION ──
+function animateCount(el, target) {
+    let cur = 0; const step = target / 80;
+    const t = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = Math.floor(cur);
+        if (cur >= target) clearInterval(t);
+    }, 25);
+}
+const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+            e.target.dataset.done = 1;
+            e.target.closest('.stats-row')?.querySelectorAll('.stat-num').forEach(el => {
+                animateCount(el, +el.dataset.target);
+            });
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(el => statsObs.observe(el));
+
+// ── PARALLAX ──
+window.addEventListener('scroll', () => {
+    const bg = document.getElementById('parallaxBg');
+    if (bg) { const r = bg.parentElement.getBoundingClientRect(); bg.style.transform = `translateY(${-r.top * 0.3}px)`; }
+    const hero = document.querySelector('.hero-content');
+    if (hero) hero.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+});
+
+// ── GALLERY LIGHTBOX ──
+document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.parentElement.addEventListener('click', () => {
+        document.getElementById('lbImg').src = img.src;
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+});
+function closeLB() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') closeLB(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+
+// ── FORM ──
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.textContent = '🙏 Namaste! Your message has been received. Our team will contact you soon.';
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    this.reset();
+});
+
+// ── SERVICE CARD TILT ──
+document.querySelectorAll('.service-tile').forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+        const r = this.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        this.style.transform = `perspective(800px) rotateX(${-y*6}deg) rotateY(${x*6}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', function() { this.style.transform = ''; });
+});
+
+// ── FOOD CARD PARALLAX ──
+document.querySelectorAll('.food-card img').forEach(img => {
+    img.parentElement.addEventListener('mousemove', function(e) {
+        const r = this.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        img.style.transform = `scale(1.08) translate(${x*10}px, ${y*10}px)`;
+    });
+    img.parentElement.addEventListener('mouseleave', function() { img.style.transform = ''; });
+});
+
+// ── MARQUEE DUPLICATE ──
+const mi = document.getElementById('marqueeInner');
+if (mi) mi.innerHTML += mi.innerHTML;
+
+// ── GSAP ANIMATIONS (if loaded) ──
+if (typeof gsap !== 'undefined') {
+    gsap.from('.hero-badge', { duration: 1, y: -20, opacity: 0, delay: 0.3 });
+    gsap.from('.hero-title', { duration: 1.2, y: 50, opacity: 0, delay: 0.5, ease: 'power3.out' });
+    gsap.from('.hero-devanagari', { duration: 1, y: 30, opacity: 0, delay: 0.8, ease: 'power2.out' });
+    gsap.from('.hero-sub', { duration: 1, y: 30, opacity: 0, delay: 1, ease: 'power2.out' });
+    gsap.from('.hero-btns', { duration: 1, y: 30, opacity: 0, delay: 1.2, ease: 'power2.out' });
+
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.about-img-main').forEach(el => {
+            gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 80%' }, x: -60, opacity: 0, duration: 1.2, ease: 'power3.out' });
+        });
+        gsap.utils.toArray('.culture-icon-item').forEach((el, i) => {
+            gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%' }, y: 30, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power2.out' });
+        });
+        gsap.utils.toArray('.invest-main').forEach(el => {
+            gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 75%' }, x: -50, opacity: 0, duration: 1, ease: 'power3.out' });
+        });
+    }
+}
+
+// ── SNOW/PARTICLE EFFECT ──
+(function() {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'particles-canvas';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    for (let i = 0; i < 40; i++) {
+        particles.push({ x: Math.random()*1920, y: Math.random()*1080, r: Math.random()*2+0.5, vx: (Math.random()-0.5)*0.3, vy: Math.random()*0.4+0.1, o: Math.random()*0.4+0.1 });
+    }
+    function draw() {
+        ctx.clearRect(0,0,W,H);
+        particles.forEach(p => {
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+            ctx.fillStyle = `rgba(212,160,23,${p.o})`; ctx.fill();
+            p.x += p.vx; p.y += p.vy;
+            if (p.y > H) { p.y = 0; p.x = Math.random()*W; }
+            if (p.x > W || p.x < 0) p.vx *= -1;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+</script>
 </body>
 </html>
